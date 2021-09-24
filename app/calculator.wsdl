@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Calculator"
+             xmlns = "http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="urn:Calculator"
+             xmlns:tns="urn:Calculator"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <message name="addRequest">
+        <part name="a" type="xsd:int"/>
+        <part name="b" type="xsd:int"/>
+    </message>
+    <message name="addResponse">
+        <part name="result" type="xsd:int"/>
+    </message>
+    <portType name="AddPort">
+        <operation name="add">
+            <input message="tns:addRequest"/>
+            <output message="tns:addResponse"/>
+        </operation>
+    </portType>
+    <binding name="AddBinding" type="tns:AddPort">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="add">
+            <soap:operation soapAction="urn:CalculatorAction"/>
+            <input>
+                <soap:body use="encoded" namespace="urn:Calculator" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="urn:Calculator" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WSDLService">
+        <documentation>Returns a greeting string.</documentation>
+        <port name="AddPort" binding="tns:AddBinding">
+            <soap:address location="http://apache/calculator_server.php?wsdl"/>
+        </port>
+    </service>
+</definitions>
