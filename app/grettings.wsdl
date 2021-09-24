@@ -32,7 +32,7 @@
     <service name="WSDLService">
         <documentation>Returns a greeting string.</documentation>
         <port name="HelloPort" binding="tns:HelloBinding">
-            <soap:address location="http://apache/soap_server.php?wsdl"/>
+            <soap:address location="http://apache/greetings_server.php?wsdl"/>
         </port>
     </service>
 </definitions>
