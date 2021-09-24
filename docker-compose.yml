@@ -1,0 +1,9 @@
+version: '3'
+services:
+  apache:
+    build:
+      context: .
+    volumes:
+      - './app:/var/www/html'
+    ports:
+      - "8000:80"
