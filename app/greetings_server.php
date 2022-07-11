@@ -1,6 +1,6 @@
 <?php
 
-class GreetingServer
+class GreetingsServer
 {
     function sayHello(string $name): string
     {
@@ -15,5 +15,5 @@ class GreetingServer
 
 $server = new SoapServer(__DIR__.'/grettings.wsdl');
 
-$server->setClass(GreetingServer::class);
+$server->setClass(GreetingsServer::class);
 $server->handle();
