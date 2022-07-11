@@ -1,0 +1,15 @@
+{
+  "name": "leewayweb/soap_server",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Mauro Chojrin",
+      "email": "mauro.chojrin@leewayweb.com"
+    }
+  ],
+  "require": {
+    "georgo/wsdl-creator": "1.4.1"
+  }
+}
