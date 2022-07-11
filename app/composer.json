@@ -1,8 +1,8 @@
 {
   "name": "leewayweb/soap_server",
-  "description": "description",
+  "description": "A POC for a Soap Server created using PHP",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Mauro Chojrin",
@@ -10,6 +10,6 @@
     }
   ],
   "require": {
-    "georgo/wsdl-creator": "1.4.1"
+    "laminas/laminas-soap": "^2.10"
   }
 }
