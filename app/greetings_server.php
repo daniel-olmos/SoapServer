@@ -16,13 +16,14 @@ class GreetingsServer
 }
 
 if (array_key_exists('wsdl', $_GET)) {
-    $autodiscover = new Laminas\Soap\AutoDiscover();
-    $autodiscover
+    die(
+    (new Laminas\Soap\AutoDiscover())
         ->setClass(GreetingsServer::class)
         ->setUri('https://leewayweb.com/soap/server')
-        ->setServiceName('Greetings');
-
-    die($autodiscover->generate()->toXml());
+        ->setServiceName('Greetings')
+        ->generate()
+        ->toXml()
+    );
 }
 
 $server = new SoapServer();
