@@ -15,16 +15,17 @@ class GreetingsServer
     }
 }
 
-$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-$currentURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-
 if (array_key_exists('wsdl', $_GET)) {
-    $wsdl = new WSDL\WSDLCreator(GreetingsServer::class, $currentURL);
-    $wsdl->setNamespace($protocol.$_SERVER['HTTP_HOST']);
+    $autodiscover = new Laminas\Soap\AutoDiscover();
+    $autodiscover
+        ->setClass(GreetingsServer::class)
+        ->setUri('https://leewayweb.com/soap/server')
+        ->setServiceName('Greetings');
 
-    die($wsdl->renderWSDL());
+    die($autodiscover->generate()->toXml());
 }
-$server = new SoapServer(__DIR__.'/grettings.wsdl');
+
+$server = new SoapServer();
 
 $server->setClass(GreetingsServer::class);
 $server->handle();
